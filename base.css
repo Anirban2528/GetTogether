@@ -108,3 +108,9 @@ button:hover {
 #room-booking-amount-container{
     margin-top: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+    #room-booking-amount-container, .error, .note{
+        font-size: 6px;
+    }
+  }

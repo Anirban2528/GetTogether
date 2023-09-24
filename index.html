@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bengali Get-together Sindri</title>
+    <link rel="stylesheet" href="base.css">
+</head>
+<body>
+    <h1>Bengali Get-together Sindri</h1>
+    <form id="payment-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" required>
+ 
+        <label for="persons">Number of persons:</label>
+        <input type="number" id="persons" min="1" oninput="handleContributionOnPersonChange()">
+        <div class="error" id="person-error" style="display: none;">Please enter correct numeric value. Persons count should be more than 0.</div>
+        
+        <label for="contribution-amount">Contribution Amount:</label>
+        <input type='text' id='contribution-amount' class="agg" readonly/>
+        <div class="note">Contribution amount Rs 600 per person in family.</div>
+
+        <label>Booking:</label>
+        <input type="radio" name="booking" value="with-room" onclick="showRoomBookingAmount()">With Room Booking
+        <input type="radio" name="booking" value="without-room" onclick="hideRoomBookingAmount()" checked>Without Room Booking
+
+        <div id="room-booking-amount-container" style="display: none;">
+            <label for="room-booking-amount">Amount for Room Booking:</label>
+            <input type="number" id="room-booking-amount" min="1500" max="1700" oninput="handleRoomBookingAmount()">
+            <div class="error" id="room-booking-amount-error" style="display: none;">Please enter correct numeric value. Amount should be between Rs 1500 to Rs 1700 inclusive.</div>
+            <div class="note">Please enquire the availability of room before proceeding and minimum amount Rs 1500 per family.</div>
+        </div>
+
+        <label for="donation-amount">Donation Amount:</label>
+        <input type='number' id='donation-amount' min="1" oninput="handleDonation()"/>
+        <div class="error" id="donation-amount-error" style="display: none;">Please enter correct numeric value. Donation amount should be greater than 0.</div>
+        <div class="note">Amount you want to donate apart from your contribution.</div>
+
+         <!-- Dynamic field to show total amount -->
+         <div class='total-amount'>
+             <label for="total-amount">Total Amount:</label>
+             <!-- Non-editable field to show total amount -->
+             <input type='text' id='total-amount' readonly/>
+         </div>
+
+         <!-- Submit button -->
+         <button type='submit' onclick='makePayment()'>Submit</button>
+
+    </form>
+
+    <!-- JavaScript script -->
+    <script src='razorpay.js'></script>
+    <script src='payment.js'></script>
+
+</body>
+</html>
